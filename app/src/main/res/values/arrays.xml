@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="drawer_tabs">
+        <item>Search</item>
+        <item>Hits</item>
+        <item>Upcoming</item>
+    </string-array>
+</resources>
