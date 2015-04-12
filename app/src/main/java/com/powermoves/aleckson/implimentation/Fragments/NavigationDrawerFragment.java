@@ -1,4 +1,4 @@
-package com.powermoves.aleckson.implimentation;
+package com.powermoves.aleckson.implimentation.Fragments;
 
 
 import android.app.Fragment;
@@ -15,6 +15,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.powermoves.aleckson.implimentation.Adapters.AdapterDrawer;
+import com.powermoves.aleckson.implimentation.Information;
+import com.powermoves.aleckson.implimentation.MainActivity;
+import com.powermoves.aleckson.implimentation.MyApplication;
+import com.powermoves.aleckson.implimentation.R;
 
 import java.util.ArrayList;
 import java.util.List;

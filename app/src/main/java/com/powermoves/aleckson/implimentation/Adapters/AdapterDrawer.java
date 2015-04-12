@@ -1,4 +1,4 @@
-package com.powermoves.aleckson.implimentation;
+package com.powermoves.aleckson.implimentation.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.powermoves.aleckson.implimentation.Information;
+import com.powermoves.aleckson.implimentation.R;
 
 import java.util.Collections;
 import java.util.List;
