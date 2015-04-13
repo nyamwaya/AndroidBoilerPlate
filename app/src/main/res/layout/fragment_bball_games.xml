@@ -5,11 +5,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <!-- Main ListView
-        Always give id value as list(@android:id/list)
-   -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        Always give id value as list(@android:id/list) -->
+
 
 </FrameLayout>

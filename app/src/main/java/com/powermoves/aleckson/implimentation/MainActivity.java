@@ -1,5 +1,6 @@
 package com.powermoves.aleckson.implimentation;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -28,18 +29,37 @@ public class MainActivity extends ActionBarActivity {
     private ViewPager mPager;
 
 
-    private JSONAdpter adapter;
+    private JSONAdpter mAdapter;
     private static String testURL = "https://www.kimonolabs.com/api/e7c6345o?apikey=QxPN6k3UB6aVCCjnmOzY5YdiTzugcpWw";
-    private RecyclerView rView;
+    private RecyclerView mRecyclerView;
+    private Context context;
+    public RecyclerView.LayoutManager mLayoutManager;
     private List<Games> gamesList = new ArrayList<>();
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mRecyclerView = (RecyclerView) findViewById(R.id.list);
+
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+
+        // specify an adapter (see also next example)
+       // mAdapter = new JSONAdpter(JSONAdpter);
+        mRecyclerView.setAdapter(mAdapter);
+
+
+
+
         //Inflating toolbar
         mToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mToolbar);
@@ -49,11 +69,6 @@ public class MainActivity extends ActionBarActivity {
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
 
-         rView = (RecyclerView) layout.findViewById(R.id.fra);
-        rView.setHasFixedSize(true);
-        LinearLayoutManager layout = new LinearLayoutManager(this);
-        layout.setOrientation(LinearLayoutManager.VERTICAL);
-        rView.setLayoutManager(layout);
 
         fillRecyclerview task = new fillRecyclerview();
         task.execute();
@@ -61,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
 
     /**
      * Async task class to get json by making HTTP call
-     * */
+     */
 
     private class fillRecyclerview extends AsyncTask<Void, Void, List<Games>> {
 
@@ -73,11 +88,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @Override
-        protected void onPostExecute(List<Games> result){
-            adapter =  new JSONAdpter(MainActivity.this, result);
-            rView.setAdapter(adapter);
+        protected void onPostExecute(List<Games> result) {
+            mAdapter = new JSONAdpter(MainActivity.this, result);
+            mRecyclerView.setAdapter(mAdapter);
         }
     }
+
     public void onDrawerItemClicked(int index) {
         mPager.setCurrentItem(index);
     }
@@ -89,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
 
-                // Setting the layout Manager
+        // Setting the layout Manager
     }
 
     @Override

@@ -21,11 +21,10 @@ public class GamesJSONParser {
 
 
             try {
-                JSONObject jsonObj = new JSONObject();
-                JSONObject jb = jsonObj.getJSONObject("results");
-                JSONArray jsonArray = jb.getJSONArray("collection1");
+                JSONObject jb = new JSONObject(content);
+                JSONObject results = jb.getJSONObject("results");
+                JSONArray jsonArray = results.getJSONArray("collection1");
                 List<Games> gamesList = new ArrayList<>();
-
 
                 // looping through All Contacts
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -51,6 +50,7 @@ public class GamesJSONParser {
                 return gamesList;
             } catch (JSONException e) {
                 e.printStackTrace();
+
                 return null;
             }
         }
